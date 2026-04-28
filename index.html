@@ -10,11 +10,14 @@
 <body>
 
     <header class="navbar">
-        <div class="logo">COLETTE</div>
+        <a href="#inicio" class="logo-link">
+            <img src="img/logo.jpg" alt="Colette Sleepwear Logo" class="logo-img">
+        </a>
         <nav>
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#coleccion">Colección</a></li>
+                <li><a href="#nosotras">Nosotras</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
@@ -29,15 +32,22 @@
         </div>
     </section>
 
-    <section id="coleccion" class="container">
+    <section id="nosotras" class="narrative-section">
+        <div class="narrative-container">
+            <h3 class="narrative-title">Un Código Privado</h3>
+            <p class="narrative-text">
+                Dicen que los mejores secretos se guardan bajo las sábanas. No hablamos de amor, hablamos de la textura que elegiste para despedir el día. Creamos una experiencia táctil que tu piel reconocerá antes que tus ojos. No es solo una pijama; es el código privado entre tú y tu descanso. <br><strong>¿Te atreves a sentir la diferencia?</strong>
+            </p>
+        </div>
+    </section>
+
+    <section id="coleccion" class="container gallery-section">
         <h2 class="section-title">Nuestra Colección</h2>
         <div class="gallery-grid">
-            <div class="card"><img src="pijama-1.jpg" alt="Pijama Colette"></div>
-            <div class="card"><img src="pijama-2.jpg" alt="Pijama Colette"></div>
-            <div class="card"><img src="pijama-3.jpg" alt="Pijama Colette"></div>
-            <div class="card"><img src="pijama-4.jpg" alt="Pijama Colette"></div>
-            <div class="card"><img src="pijama-5.jpg" alt="Pijama Colette"></div>
-            <div class="card"><img src="pijama-6.jpg" alt="Pijama Colette"></div>
+            <div class="card"><img src="img/pijama1.png" alt="Pijama Colette" class="gallery-item"></div>
+            <div class="card"><img src="img/pijama2.jpg" alt="Pijama Colette" class="gallery-item"></div>
+            <div class="card"><img src="img/pijama3.jpg" alt="Pijama Colette" class="gallery-item"></div>
+
         </div>
     </section>
 
@@ -47,6 +57,13 @@
             <a href="#">Instagram</a> | <a href="#">WhatsApp</a>
         </div>
     </footer>
+
+    <div id="lightboxModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="imgAmpliada">
+    </div>
+
     <script src="script.js"></script>
+
 </body>
 </html>

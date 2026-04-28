@@ -219,3 +219,141 @@ footer {
         text-align: center;
     }
 }
+/* --- ESTILOS COMPLEMENTARIOS --- */
+
+/* 1. Ajustes de Logo Imagen (Estético) */
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    max-height: 38px; /* Tamaño controlado para el navbar */
+    width: auto;
+    object-fit: contain;
+    /* Un toque sutil para integrarlo si el fondo no es 100% blanco */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05)); 
+    transition: transform 0.3s ease;
+}
+.navbar {
+    padding: 10px 5%; /* Navbar más delgado por defecto */
+}
+
+.logo-link:hover .logo-img {
+    transform: scale(1.05); /* Efecto sutil al pasar el mouse */
+}
+
+/* 2. Sección Narrativa/Mensaje Secreto (Armonía) */
+.narrative-section {
+    background-color: var(--soft-white); /* Fondo limpio */
+    padding: 80px 10%;
+    text-align: center;
+    position: relative;
+    /* Pequeña línea magenta superior para conectar con el diseño */
+    border-top: 2px solid var(--primary-pink);
+}
+
+.narrative-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.narrative-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--accent-magenta);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-style: italic; /* Para darle un toque más íntimo */
+}
+
+.narrative-text {
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark-text);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.narrative-text strong {
+    color: var(--accent-magenta);
+    font-weight: 600;
+    display: block;
+    margin-top: 20px;
+}
+
+/* 3. Estilos Lightbox Modal */
+.modal {
+    display: none; /* Invisible por defecto */
+    position: fixed;
+    z-index: 2000; /* Por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo negro semitransparente */
+    backdrop-filter: blur(5px); /* Efecto blur moderno */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Indica que se puede cerrar */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: zoomModal 0.4s ease-out; /* Animación de entrada */
+}
+
+/* Animación de zoom */
+@keyframes zoomModal {
+    from {transform: scale(0.7); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+.close-modal {
+    position: fixed;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 2100;
+}
+
+.close-modal:hover {
+    color: var(--primary-pink);
+}
+
+/* Ajustes menores para la galería si usas JS */
+.gallery-section {
+    padding-top: 20px;
+}
+
+.gallery-item {
+    cursor: pointer; /* Indica que es clickeable */
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+}
+/* Clase para ocultar el navbar */
+.navbar-hidden {
+    transform: translateY(-100%);
+    box-shadow: none;
+}
+
+/* Asegúrate de que la clase .navbar tenga una transición suave */
+.navbar {
+    transition: transform 0.4s ease-in-out, padding 0.3s ease;
+    /* ... el resto de tus estilos de .navbar ... */
+}
