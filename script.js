@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.card').forEach(card => {
-        revealObserver.observe(card);
+    document.querySelectorAll('.card, .contact-card').forEach(el => {
+        revealObserver.observe(el);
     });
 
     // --- 4. LIGHTBOX / MODAL DE IMÁGENES ---

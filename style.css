@@ -72,8 +72,7 @@ nav ul li a {
 /* Sección Hero */
 .hero {
     height: 90vh;
-    background: linear-gradient(rgba(252, 228, 236, 0.7), rgba(252, 228, 236, 0.7)),
-                url('background-nubes.jpg') center/cover;
+    background: linear-gradient(to bottom, rgba(252, 228, 236, 0.8) 0%, rgba(252, 228, 236, 0.4) 70%, var(--soft-white) 100%), url('background-nubes.jpg') center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -198,6 +197,11 @@ nav ul li a {
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--primary-pink);
     padding: 10px 5% !important; /* Se hace más delgada */
+}
+.navbar-hidden {
+    transform: translateY(-100%); /* Mueve la navbar completamente fuera de la vista hacia arriba */
+    opacity: 0; /* Opcional: para un efecto de desvanecimiento */
+    pointer-events: none; /* Deshabilita interacciones cuando está oculta */
 }
 
 /* Estado inicial de las tarjetas para la animación de aparición */
@@ -393,4 +397,90 @@ nav ul li a {
 
 .gallery-item:hover {
     transform: scale(1.02);
+}
+.bubble-divider {
+    height: 180px;
+    background: linear-gradient(to bottom, var(--soft-white), var(--primary-pink), var(--soft-white));
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgba(216, 27, 96, 0.1);
+    border-bottom: 1px solid rgba(216, 27, 96, 0.1);
+}
+
+/* --- SECCIÓN CONTACTO --- */
+.contact-section {
+    padding: 100px 5%;
+    background-color: white;
+    text-align: center;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 50px auto 0;
+}
+
+.contact-card {
+    background: var(--soft-white);
+    padding: 45px 30px;
+    border-radius: 25px;
+    border: 1px solid var(--primary-pink);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    opacity: 0; /* Para el efecto de aparición */
+    transform: translateY(30px);
+}
+
+.contact-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 30px rgba(216, 27, 96, 0.1);
+    background: white;
+    border-color: var(--accent-magenta);
+}
+
+.contact-card i {
+    font-size: 2.8rem;
+    color: var(--accent-magenta);
+    margin-bottom: 10px;
+}
+
+.contact-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--dark-text);
+}
+
+.contact-card p, .contact-card a {
+    color: #666;
+    text-decoration: none;
+    font-size: 1.05rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icon {
+    font-size: 1.8rem;
+    color: var(--accent-magenta);
+    transition: 0.3s;
+}
+
+.social-icon:hover {
+    transform: scale(1.3) rotate(8deg);
 }
