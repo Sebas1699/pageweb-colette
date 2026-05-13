@@ -48,8 +48,7 @@ nav ul {
 
 nav ul li a {
     text-decoration: none;
-    color: var(--dark-text);
-    margin-left: 20px;
+    color: var(--dark-text);    margin-left: 20px;
     font-size: 0.9rem;
     font-weight: 600;
 }
@@ -178,6 +177,62 @@ nav ul li a {
 .card.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+.product-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.price {
+    color: var(--accent-magenta);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.size-selector {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.size-btn {
+    border: 1px solid #ddd;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.size-btn.selected {
+    background-color: var(--accent-magenta);
+    color: white;
+    border-color: var(--accent-magenta);
+}
+
+.btn-add-cart {
+    width: 100%;
+    padding: 10px;
+    background: var(--primary-pink);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-add-cart:hover {
+    background: #f8bbd0;
 }
 
 .card img {
@@ -484,3 +539,103 @@ nav ul li a {
 .social-icon:hover {
     transform: scale(1.3) rotate(8deg);
 }
+
+/* --- ESTILOS CARRITO --- */
+.cart-trigger {
+    position: relative;
+    margin-left: 25px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    color: var(--accent-magenta);
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--dark-text);
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+.cart-modal {
+    display: none;
+    position: fixed;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 3000;
+    justify-content: flex-end;
+    padding: 20px; /* Crea el espacio para el efecto flotante */
+    align-items: center; /* Centrado vertical para resaltar el efecto flotante */
+}
+
+.cart-content {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    max-height: calc(100vh - 80px); /* Altura máxima para que no toque los bordes */
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px; /* Bordes redondeados para el efecto flotante */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    animation: slideLeft 0.3s ease-out;
+    overflow: hidden;
+}
+
+@keyframes slideLeft {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+.cart-header {
+    padding: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    align-items: center;
+}
+
+.cart-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; }
+
+.item-details { flex: 1; }
+.item-details h4 { font-size: 0.9rem; margin-bottom: 2px; }
+.item-details p { font-size: 0.8rem; color: #777; }
+
+.qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.qty-btn { background: #eee; border: none; width: 25px; height: 25px; cursor: pointer; border-radius: 4px; }
+
+.remove-item { color: #ff5252; cursor: pointer; font-size: 1.1rem; }
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid var(--primary-pink);
+    background: var(--soft-white);
+}
+
+.total { font-size: 1.2rem; font-weight: 600; margin-bottom: 15px; text-align: center; }
+
+.empty-msg { text-align: center; margin-top: 50px; color: #999; }

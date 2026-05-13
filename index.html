@@ -21,6 +21,10 @@
                 <li><a href="#coleccion">Colección</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
+            <div class="cart-trigger" id="cartTrigger">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </div>
         </nav>
     </header>
 
@@ -70,10 +74,51 @@
     <section id="coleccion" class="container gallery-section">
         <h2 class="section-title">Nuestra Colección</h2>
         <div class="gallery-grid">
-            <div class="card"><img src="img/pijama1.png" alt="Pijama Colette" class="gallery-item"></div>
-            <div class="card"><img src="img/pijama2.jpg" alt="Pijama Colette" class="gallery-item"></div>
-            <div class="card"><img src="img/pijama3.jpg" alt="Pijama Colette" class="gallery-item"></div>
-
+            <!-- Producto 1 -->
+            <div class="card" data-id="1" data-name="Pijama Seda Rosa" data-price="85000">
+                <img src="img/pijama1.png" alt="Pijama Seda Rosa" class="gallery-item">
+                <div class="product-info">
+                    <h3>Pijama Seda Rosa</h3>
+                    <p class="price">$85.000</p>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="S">S</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="L">L</button>
+                        <button class="size-btn" data-size="XL">XL</button>
+                    </div>
+                    <button class="btn-add-cart">Agregar al carrito</button>
+                </div>
+            </div>
+            <!-- Producto 2 -->
+            <div class="card" data-id="2" data-name="Pijama Satín Azul" data-price="92000">
+                <img src="img/pijama2.jpg" alt="Pijama Satín Azul" class="gallery-item">
+                <div class="product-info">
+                    <h3>Pijama Satín Azul</h3>
+                    <p class="price">$92.000</p>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="S">S</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="L">L</button>
+                        <button class="size-btn" data-size="XL">XL</button>
+                    </div>
+                    <button class="btn-add-cart">Agregar al carrito</button>
+                </div>
+            </div>
+            <!-- Producto 3 -->
+            <div class="card" data-id="3" data-name="Pijama Algodón Sueños" data-price="78000">
+                <img src="img/pijama3.jpg" alt="Pijama Algodón Sueños" class="gallery-item">
+                <div class="product-info">
+                    <h3>Pijama Algodón Sueños</h3>
+                    <p class="price">$78.000</p>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="S">S</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="L">L</button>
+                        <button class="size-btn" data-size="XL">XL</button>
+                    </div>
+                    <button class="btn-add-cart">Agregar al carrito</button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -116,6 +161,24 @@
     <footer class="footer">
         <p>&copy; 2024 Colette Sleepwear - Villavicencio</p>
     </footer>
+
+    <!-- Carrito Lateral / Modal -->
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Tu Carrito</h3>
+                <span class="close-cart">&times;</span>
+            </div>
+            <div id="cartItems" class="cart-items">
+                <!-- Se llena con JS -->
+                <p class="empty-msg">Tu carrito está vacío 💤</p>
+            </div>
+            <div id="cartFooter" class="cart-footer" style="display: none;">
+                <div class="total">Total: <span id="cartTotal">$0</span></div>
+                <button id="btnCheckout" class="btn-primary">Comprar por WhatsApp</button>
+            </div>
+        </div>
+    </div>
 
     <div id="lightboxModal" class="modal">
         <span class="close-modal">&times;</span>

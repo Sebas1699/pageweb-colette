@@ -95,4 +95,131 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // --- 5. LÓGICA DEL CARRITO DE COMPRAS ---
+    let cart = [];
+    const cartModal = document.getElementById('cartModal');
+    const cartItemsContainer = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    const cartCount = document.querySelector('.cart-count');
+    const cartFooter = document.getElementById('cartFooter');
+
+    // Abrir/Cerrar Carrito
+    document.getElementById('cartTrigger').addEventListener('click', () => {
+        cartModal.style.display = 'flex';
+    });
+    document.querySelector('.close-cart').addEventListener('click', () => {
+        cartModal.style.display = 'none';
+    });
+
+    // Selección de Talla
+    document.querySelectorAll('.size-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const parent = e.target.parentElement;
+            parent.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+            e.target.classList.add('selected');
+        });
+    });
+
+    // Agregar al Carrito
+    document.querySelectorAll('.btn-add-cart').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const card = e.target.closest('.card');
+            const selectedSize = card.querySelector('.size-btn.selected');
+            
+            if (!selectedSize) {
+                alert("Por favor selecciona una talla antes de agregar ✨");
+                return;
+            }
+
+            const product = {
+                id: card.dataset.id,
+                name: card.dataset.name,
+                price: parseInt(card.dataset.price),
+                size: selectedSize.dataset.size,
+                img: card.querySelector('img').src,
+                quantity: 1
+            };
+
+            // Evitar duplicados del mismo ID y Talla
+            const existingItem = cart.find(item => item.id === product.id && item.size === product.size);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push(product);
+            }
+
+            updateCartUI();
+            // Feedback visual
+            btn.innerText = "¡Agregado!";
+            setTimeout(() => btn.innerText = "Agregar al carrito", 1000);
+        });
+    });
+
+    function updateCartUI() {
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+        let count = 0;
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p class="empty-msg">Tu carrito está vacío 💤</p>';
+            cartFooter.style.display = 'none';
+        } else {
+            cartFooter.style.display = 'block';
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                count += item.quantity;
+                
+                cartItemsContainer.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.img}" alt="${item.name}">
+                        <div class="item-details">
+                            <h4>${item.name}</h4>
+                            <p>Talla: ${item.size} | $${item.price.toLocaleString()}</p>
+                            <div class="qty-controls">
+                                <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+                                <span>${item.quantity}</span>
+                                <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+                            </div>
+                        </div>
+                        <i class="fas fa-trash remove-item" onclick="removeItem(${index})"></i>
+                    </div>
+                `;
+            });
+        }
+
+        cartTotal.innerText = `$${total.toLocaleString()}`;
+        cartCount.innerText = count;
+    }
+
+    window.changeQty = (index, delta) => {
+        cart[index].quantity += delta;
+        if (cart[index].quantity < 1) cart[index].quantity = 1;
+        updateCartUI();
+    };
+
+    window.removeItem = (index) => {
+        cart.splice(index, 1);
+        updateCartUI();
+    };
+
+    // Acción de Compra - WhatsApp
+    document.getElementById('btnCheckout').addEventListener('click', () => {
+        let orderDetails = "";
+        cart.forEach(item => {
+            orderDetails += "- Pijama: " + item.name + "\n- Talla: " + item.size + "\n- Cantidad: " + item.quantity + "\n\n";
+        });
+
+        const mensaje = "Hola, Ana.\n\n" +
+            "Espero que te encuentres muy bien.\n\n" +
+            "Me gustaría realizar una compra con COLLETTE SLEEPWEAR.\n\n" +
+            "Detalles del pedido:\n" +
+            orderDetails +
+            "Quedo atento a tu confirmacion y a las indicaciones para continuar con el proceso de pago.\n\n" +
+            "Muchas gracias.\n" +
+            "Sera un gusto adquirir una de sus hermosas prendas.";
+
+        const encodedMessage = encodeURIComponent(mensaje);
+        window.open(`https://wa.me/573227375001?text=${encodedMessage}`, '_blank');
+    });
+
 });
