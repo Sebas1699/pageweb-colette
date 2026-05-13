@@ -543,7 +543,6 @@ nav ul li a {
 /* --- ESTILOS CARRITO --- */
 .cart-trigger {
     position: relative;
-    margin-left: 25px;
     cursor: pointer;
     font-size: 1.3rem;
     color: var(--accent-magenta);
