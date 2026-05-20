@@ -301,6 +301,11 @@ nav ul li a {
 }
 
 @media screen and (max-width: 768px) {
+    .hero {
+        /* Desactiva el efecto parallax en móviles para evitar que la imagen desaparezca */
+        background-attachment: scroll !important;
+    }
+
     .navbar {
         flex-direction: column;
         padding: 15px;
