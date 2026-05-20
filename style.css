@@ -638,3 +638,33 @@ nav ul li a {
 .total { font-size: 1.2rem; font-weight: 600; margin-bottom: 15px; text-align: center; }
 
 .empty-msg { text-align: center; margin-top: 50px; color: #999; }
+
+/* --- ESTILOS CATEGORÍAS Y BANNER DE COLECCIÓN --- */
+.collection-category {
+    margin-bottom: 40px;
+}
+
+.category-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--accent-magenta);
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    font-style: italic;
+}
+
+.collection-banner {
+    height: 400px;
+    width: 100%;
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('img/banner-coleccion.jpg') center/cover fixed;
+    margin: 40px 0;
+    opacity: 0; /* Para el efecto de aparición */
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.collection-banner.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

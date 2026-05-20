@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.card, .contact-card').forEach(el => {
+    document.querySelectorAll('.card, .contact-card, .collection-banner').forEach(el => {
         revealObserver.observe(el);
     });
 
