@@ -657,11 +657,15 @@ nav ul li a {
 .collection-banner {
     height: 400px;
     width: 100%;
-    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('img/banner-coleccion.jpg') center/cover fixed;
+    background: linear-gradient(to bottom, var(--soft-white), var(--primary-pink), var(--soft-white));
+    border-top: 1px solid rgba(216, 27, 96, 0.1);
+    border-bottom: 1px solid rgba(216, 27, 96, 0.1);
     margin: 40px 0;
     opacity: 0; /* Para el efecto de aparición */
     transform: translateY(30px);
     transition: all 1s ease-out;
+    position: relative; /* Necesario para posicionar las burbujas internas */
+    overflow: hidden; /* Asegura que las burbujas no se salgan del contenedor */
 }
 
 .collection-banner.visible {
