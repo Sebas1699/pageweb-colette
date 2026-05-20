@@ -71,13 +71,28 @@ nav ul li a {
 /* Sección Hero */
 .hero {
     height: 90vh;
-    background: linear-gradient(to bottom, rgba(252, 228, 236, 0.8) 0%, rgba(252, 228, 236, 0.4) 70%, var(--soft-white) 100%), url('background-nubes.jpg') center/cover;
+    /* Aquí es donde pondrás tu imagen de fondo.
+       Solo cambia 'img/tu-imagen-de-fondo.jpg' por la ruta de tu foto. */
+    background-image: url('img/fondoinicial.jpeg'); /* <-- ¡Cambia esta URL! */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Opcional: para un efecto parallax suave */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
     overflow: hidden;
+}
+
+/* Capa de degradado rosado sobre la imagen de fondo */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(252, 228, 236, 0.8) 0%, rgba(252, 228, 236, 0.4) 70%, var(--soft-white) 100%);
+    z-index: 2; /* Asegura que el degradado esté sobre la imagen pero debajo del contenido */
 }
 
 .hero-content {
@@ -642,6 +657,11 @@ nav ul li a {
 /* --- ESTILOS CATEGORÍAS Y BANNER DE COLECCIÓN --- */
 .collection-category {
     margin-bottom: 40px;
+    padding: 40px 20px;
+    border-radius: 20px;
+    background: linear-gradient(to bottom, var(--soft-white), var(--primary-pink), var(--soft-white));
+    border: 1px solid rgba(216, 27, 96, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .category-title {
